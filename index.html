@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="coracao.ico" type="image/x-icon">
+    <title>Para o amor da minha vida ❤</title>
+    <style>
+        body {
+            background-color: #ffeef0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .slideshow {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text {
+            margin-top: 20px;
+            font-size: 32px;
+            color: #d11a2a;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .message-button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #d11a2a;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+
+        .message-button:hover {
+            background-color: #a8121f;
+        }
+
+        /* Corações */
+        .heart {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            transform: rotate(45deg);
+            left: 50%;
+            top: -10px;
+            animation: fall 6s linear infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: -10px;
+            top: 0;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: rotate(45deg) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slideshow">
+        <div class="slide active">
+            <img src="foto1.jpg" alt="Foto 1">
+        </div>
+        <div class="slide">
+            <img src="foto2.jpg" alt="Foto 2">
+        </div>
+        <div class="slide">
+            <img src="foto3.jpg" alt="Foto 3">
+        </div>
+        <div class="slide">
+            <img src="foto4.jpg" alt="Foto 4">
+        </div>
+        <div class="slide">
+            <img src="foto5.jpg" alt="Foto 5">
+        </div>
+        <div class="slide">
+            <img src="foto6.jpg" alt="Foto 6">
+        </div>
+        <div class="slide">
+            <img src="foto7.jpg" alt="Foto 7">
+        </div>
+        <div class="slide">
+            <img src="foto8.jpg" alt="Foto 8">
+        </div>
+        <div class="slide">
+            <img src="foto9.jpg" alt="Foto 9">
+        </div>
+        <div class="slide">
+            <img src="foto10.jpg" alt="Foto 10">
+        </div>
+        <div class="slide">
+            <img src="foto11.jpg" alt="Foto 11">
+        </div>
+        <div class="slide">
+            <img src="foto12.jpg" alt="Foto 12">
+        </div>
+        <div class="slide">
+            <img src="foto13.jpg" alt="Foto 13">
+        </div>
+        <div class="slide">
+            <img src="foto14.jpg" alt="Foto 14">
+        </div>
+        <!-- Adicione mais fotos se quiser -->
+    </div>
+
+    <div class="text">Eu te amo neném ❤</div>
+
+    <button class="message-button" onclick="showMessage()">💌 Mensagem especial</button>
+
+    <!-- Música de fundo -->
+    <audio autoplay loop>
+        <source src="vem ca.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <script>
+        // Slideshow
+        const slides = document.querySelectorAll('.slide');
+        let currentIndex = 0;
+
+        setInterval(() => {
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add('active');
+        }, 3000);
+
+        // Mensagem especial
+        function showMessage() {
+            alert("Amor, você é a pessoa mais incrível do mundo. Te amo infinitamente! 💖");
+        }
+
+        // Corações caindo
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
