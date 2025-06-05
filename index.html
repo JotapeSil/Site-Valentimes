@@ -166,11 +166,10 @@
 
     <button class="message-button" onclick="showMessage()">💌 Mensagem especial</button>
 
-    <!-- Música de fundo -->
-    <audio autoplay loop>
-        <source src="vem ca.mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio.
-    </audio>
+    <audio id="meuAudio" loop>
+    <source src="vem ca.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
 
     <script>
         // Slideshow
@@ -202,6 +201,17 @@
         }
 
         setInterval(createHeart, 500);
+    </script>
+    <script>
+        function tocarAudio() {
+      const audio = document.getElementById('meuAudio');
+      audio.play().catch((error) => {
+        console.error("Erro ao tentar tocar o áudio:", error);
+      });
+      document.body.removeEventListener('click', tocarAudio);
+    }
+
+    document.body.addEventListener('click', tocarAudio);
     </script>
 </body>
 </html>
